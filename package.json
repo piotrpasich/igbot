@@ -1,0 +1,41 @@
+{
+  "name": "slackgram",
+  "version": "1.0.0",
+  "description": "Download images/videos from Instagram and Facebook posts, reels, and stories via CLI or HTTP API.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "dist/server.js",
+  "bin": {
+    "slackgram": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "postinstall": "node scripts/ensure-ytdlp.js",
+    "setup:ytdlp": "bash scripts/setup-ytdlp.sh",
+    "build": "tsc -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "dev:cli": "tsx src/cli.ts",
+    "dev:api": "tsx watch src/server.ts",
+    "start:api": "node dist/server.js",
+    "start:cli": "node dist/cli.js",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "echo \"no tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "commander": "^15.0.0",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "mime-types": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/express": "^5.0.6",
+    "@types/mime-types": "^3.0.1",
+    "@types/node": "^22.10.5",
+    "tsx": "^4.23.13",
+    "typescript": "^5.7.3"
+  }
+}

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Thin launcher so `slackgram` can be run from anywhere without a global
+# npm link. Resolves to the compiled dist/cli.js next to this script.
+set -euo pipefail
+REAL_SOURCE="$(readlink -f "${BASH_SOURCE[0]}")"
+SCRIPT_DIR="$(cd "$(dirname "$REAL_SOURCE")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+exec node "$PROJECT_ROOT/dist/cli.js" "$@"

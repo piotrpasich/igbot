@@ -1,0 +1,18 @@
+{
+  "platform": "facebook",
+  "sourceUrl": "https://www.facebook.com/reel/2460463831101994",
+  "id": "2460463831101994",
+  "title": "391K views · 3.8K reactions | cały program dostępny na standhub | #standup #humor #komedia #żart #śmieszne | Sylwia Wiszowata | Sylwia Wiszowata",
+  "description": "cały program dostępny na standhub | #standup #humor #komedia #żart #śmieszne | Sylwia Wiszowata",
+  "uploader": "Sylwia Wiszowata",
+  "files": [
+    {
+      "kind": "video",
+      "filePath": "/home/papi/projects/slackgram/out/3_fb_reel_2460463831101994/2460463831101994.mp4",
+      "fileName": "2460463831101994.mp4",
+      "mimeType": "video/mp4",
+      "sizeBytes": 4853586,
+      "durationSeconds": 56.766
+    }
+  ]
+}

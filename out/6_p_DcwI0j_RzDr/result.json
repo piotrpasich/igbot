@@ -1,0 +1,17 @@
+{
+  "platform": "instagram",
+  "sourceUrl": "https://www.instagram.com/p/DcwI0j_RzDr/?igsi=MXVuaGE0MXF0MHBkcw==",
+  "id": "DcwI0j_RzDr",
+  "title": "Video by baldkittyed",
+  "description": "If you’re going to eat mushrooms then you should be aware of where they come from",
+  "uploader": "Ed & Ella",
+  "files": [
+    {
+      "kind": "image",
+      "filePath": "/home/papi/projects/slackgram/out/6_p_DcwI0j_RzDr/DcwI0j_RzDr.jpg",
+      "fileName": "DcwI0j_RzDr.jpg",
+      "mimeType": "image/jpeg",
+      "sizeBytes": 195143
+    }
+  ]
+}

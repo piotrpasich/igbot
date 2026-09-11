@@ -1,0 +1,19 @@
+{
+  "platform": "instagram",
+  "sourceUrl": "https://www.instagram.com/reel/Dc_ZvBcO9XM/?stkn=YTRldnRjeXI5N2Zx",
+  "id": "Dc_ZvBcO9XM",
+  "title": "Video by gazisj",
+  "description": "full tutorial soon 👧 (link below!)\n\n#povreels #workmeetings #corporate #college #coding",
+  "uploader": "Gazi Jarin",
+  "files": [
+    {
+      "kind": "video",
+      "filePath": "/home/papi/projects/slackgram/out/9_reel_Dc_ZvBcO9XM/Dc_ZvBcO9XM.mp4",
+      "fileName": "Dc_ZvBcO9XM.mp4",
+      "mimeType": "video/mp4",
+      "sizeBytes": 1383903,
+      "width": 1080,
+      "height": 1920
+    }
+  ]
+}

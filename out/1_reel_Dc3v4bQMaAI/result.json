@@ -1,0 +1,19 @@
+{
+  "platform": "instagram",
+  "sourceUrl": "https://www.instagram.com/reel/Dc3v4bQMaAI/?stkn=aGxvaWloMW14eG02",
+  "id": "Dc3v4bQMaAI",
+  "title": "Video by kaiso_",
+  "description": "They said “keep in touch.” I gave them options x\n.\n.\n#lastdayofwork #office #workworkwork #professional",
+  "uploader": "Pawel",
+  "files": [
+    {
+      "kind": "video",
+      "filePath": "/home/papi/projects/slackgram/out/1_reel_Dc3v4bQMaAI/Dc3v4bQMaAI.mp4",
+      "fileName": "Dc3v4bQMaAI.mp4",
+      "mimeType": "video/mp4",
+      "sizeBytes": 2272063,
+      "width": 1440,
+      "height": 2560
+    }
+  ]
+}

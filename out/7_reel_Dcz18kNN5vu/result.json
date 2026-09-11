@@ -1,0 +1,18 @@
+{
+  "platform": "instagram",
+  "sourceUrl": "https://www.instagram.com/reel/Dcz18kNN5vu/?stkn=MWR2MHczZDg3N2tnZg==",
+  "id": "Dcz18kNN5vu",
+  "title": "Video by visaocameras",
+  "uploader": "ANSELMO",
+  "files": [
+    {
+      "kind": "video",
+      "filePath": "/home/papi/projects/slackgram/out/7_reel_Dcz18kNN5vu/Dcz18kNN5vu.mp4",
+      "fileName": "Dcz18kNN5vu.mp4",
+      "mimeType": "video/mp4",
+      "sizeBytes": 9351898,
+      "width": 1080,
+      "height": 1920
+    }
+  ]
+}

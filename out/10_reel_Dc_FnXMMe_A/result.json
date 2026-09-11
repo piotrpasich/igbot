@@ -1,0 +1,19 @@
+{
+  "platform": "instagram",
+  "sourceUrl": "https://www.instagram.com/reel/Dc_FnXMMe_A/?stkn=Z3AzdjV1djRxdWln",
+  "id": "Dc_FnXMMe_A",
+  "title": "Video by marigonahasaj",
+  "description": "Apparently my Claude agent has developed standards, opinions and a lunch break. 🇫🇷☕️\n\n#claudeai #aiagents #artificialintelligence #aitools #frenchhumour",
+  "uploader": "Marigona Hasaj",
+  "files": [
+    {
+      "kind": "video",
+      "filePath": "/home/papi/projects/slackgram/out/10_reel_Dc_FnXMMe_A/Dc_FnXMMe_A.mp4",
+      "fileName": "Dc_FnXMMe_A.mp4",
+      "mimeType": "video/mp4",
+      "sizeBytes": 4787342,
+      "width": 1080,
+      "height": 1920
+    }
+  ]
+}
