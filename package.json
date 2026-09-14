@@ -12,7 +12,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "postinstall": "node scripts/ensure-ytdlp.js",
+    "postinstall": "node \"$(dirname \"$(readlink -f \"$npm_package_json\")\")/scripts/ensure-ytdlp.js\"",
     "setup:ytdlp": "bash scripts/setup-ytdlp.sh",
     "build": "tsc -p tsconfig.json",
     "clean": "rm -rf dist",
