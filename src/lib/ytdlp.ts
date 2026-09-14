@@ -31,6 +31,7 @@ export function runYtDlp(options: YtDlpRunOptions): Promise<YtDlpRunResult> {
     "--ignore-config",
     ...args,
     ...(cookiesFile ? ["--cookies", cookiesFile] : []),
+    ...(config.ffmpegPath ? ["--ffmpeg-location", config.ffmpegPath] : []),
     "--",
     url,
   ];

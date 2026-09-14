@@ -17,3 +17,6 @@ cookies*.txt
 
 # Bundled yt-dlp binary — fetched by scripts/setup-ytdlp.sh, not committed
 /bin/yt-dlp
+
+# Bundled ffmpeg binary — fetched by scripts/setup-ffmpeg.sh, not committed
+/bin/ffmpeg

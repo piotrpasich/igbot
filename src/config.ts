@@ -19,11 +19,31 @@ function resolveBundledYtDlp(): string | undefined {
   }
 }
 
+function resolveBundledFfmpeg(): string | undefined {
+  const candidate = path.join(projectRoot, "bin", "ffmpeg");
+  try {
+    fs.accessSync(candidate, fs.constants.X_OK);
+    return candidate;
+  } catch {
+    return undefined;
+  }
+}
+
 export interface AppConfig {
   /** Path (or bare command name) used to invoke yt-dlp. */
   ytDlpPath: string;
   /** Optional path to a Netscape-format cookies file, used by default when none is supplied per-request. */
   defaultCookiesFile?: string;
+  /**
+   * Optional path to an ffmpeg binary, passed to yt-dlp via
+   * `--ffmpeg-location`. yt-dlp needs ffmpeg to mux separate DASH
+   * video+audio streams into a single file; many Instagram/Facebook posts
+   * only expose separate streams (no progressive/pre-muxed format), so
+   * without it those downloads silently fail even though metadata probing
+   * succeeds. Falls back to a `ffmpeg` found on PATH (yt-dlp's own default)
+   * when unset/not present.
+   */
+  ffmpegPath?: string;
   /** Directory where temporary per-request download folders are created. */
   tmpDir: string;
   /**
@@ -65,6 +85,7 @@ function intFromEnv(name: string, fallback: number): number {
 export const config: AppConfig = {
   ytDlpPath: process.env.YTDLP_PATH ?? resolveBundledYtDlp() ?? "yt-dlp",
   defaultCookiesFile: process.env.YTDLP_COOKIES_FILE,
+  ffmpegPath: process.env.FFMPEG_PATH ?? resolveBundledFfmpeg(),
   tmpDir: process.env.SLACKGRAM_TMP_DIR ?? path.join(os.tmpdir(), "slackgram"),
   // Defaults to a directory inside the project rather than the OS tmp dir,
   // since shared hosts commonly mount /tmp `noexec`, which breaks yt-dlp's

@@ -12,8 +12,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "postinstall": "node \"$(dirname \"$(readlink -f \"$npm_package_json\")\")/scripts/ensure-ytdlp.js\"",
+    "postinstall": "node \"$(dirname \"$(readlink -f \"$npm_package_json\")\")/scripts/ensure-ytdlp.js\" && node \"$(dirname \"$(readlink -f \"$npm_package_json\")\")/scripts/ensure-ffmpeg.js\"",
     "setup:ytdlp": "bash scripts/setup-ytdlp.sh",
+    "setup:ffmpeg": "bash scripts/setup-ffmpeg.sh",
     "build": "tsc -p tsconfig.json",
     "clean": "rm -rf dist",
     "dev:cli": "tsx src/cli.ts",
