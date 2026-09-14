@@ -10,11 +10,13 @@ export function createApp() {
   app.use(express.json());
   app.disable("x-powered-by");
 
-  app.get("/health", (_req, res) => {
+  const { basePath } = config;
+
+  app.get(`${basePath}/health`, (_req, res) => {
     res.json({ status: "ok" });
   });
 
-  app.use("/api", downloadRouter);
+  app.use(`${basePath}/api`, downloadRouter);
 
   app.use((req: Request, res: Response) => {
     res.status(404).json({ error: `No such route: ${req.method} ${req.path}` });
@@ -55,6 +57,4 @@ async function main(): Promise<void> {
   });
 }
 
-if (require.main === module) {
-  void main();
-}
+void main();

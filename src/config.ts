@@ -42,6 +42,15 @@ export interface AppConfig {
   processTimeoutMs: number;
   /** HTTP server port. */
   port: number;
+  /**
+   * Optional URL path prefix the app is mounted under (e.g. "/igbot" when
+   * deployed behind Phusion Passenger with PassengerBaseURI set). Passenger's
+   * Node integration does not strip this prefix from incoming request
+   * paths, so the app has to know about it and route accordingly. Leave
+   * unset when running standalone (dev, CLI, or reverse-proxied setups that
+   * do strip the prefix themselves).
+   */
+  basePath: string;
   /** Max number of concurrent extraction/download jobs across the process. */
   maxConcurrentJobs: number;
 }
@@ -64,6 +73,7 @@ export const config: AppConfig = {
   ytDlpTmpDir: process.env.YTDLP_TMPDIR ?? path.join(projectRoot, ".yt-dlp-tmp"),
   processTimeoutMs: intFromEnv("SLACKGRAM_TIMEOUT_MS", 120_000),
   port: intFromEnv("PORT", 3000),
+  basePath: (process.env.BASE_PATH ?? "").replace(/\/+$/, ""),
   maxConcurrentJobs: intFromEnv("SLACKGRAM_MAX_CONCURRENT_JOBS", 4),
 };
 
