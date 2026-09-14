@@ -1,0 +1,19 @@
+node_modules/
+dist/
+*.log
+.env
+.env.local
+
+# Downloaded media / temp working dirs if run inside the repo
+/downloads/
+/tmp/
+
+# yt-dlp binary self-extraction dir (see YTDLP_TMPDIR in config.ts)
+/.yt-dlp-tmp/
+
+# Cookies files (may contain session secrets) — never commit these
+cookies*.txt
+*.cookies.txt
+
+# Bundled yt-dlp binary — fetched by scripts/setup-ytdlp.sh, not committed
+/bin/yt-dlp

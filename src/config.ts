@@ -26,6 +26,18 @@ export interface AppConfig {
   defaultCookiesFile?: string;
   /** Directory where temporary per-request download folders are created. */
   tmpDir: string;
+  /**
+   * Optional TMPDIR override passed to the yt-dlp child process only.
+   *
+   * The standalone yt-dlp_linux binary is a self-extracting PyInstaller
+   * bundle: it unpacks its embedded Python runtime and shared libraries
+   * into TMPDIR (the OS default tmp dir, e.g. /tmp) and then mmaps/executes
+   * from there. Some shared hosts mount /tmp with `noexec`, which makes
+   * that self-extraction fail with errors like "failed to map segment from
+   * shared object". Setting YTDLP_TMPDIR to a directory that does allow
+   * execution (e.g. somewhere under the app's own home directory) fixes it.
+   */
+  ytDlpTmpDir?: string;
   /** Max time (ms) allowed for a single yt-dlp invocation before it's killed. */
   processTimeoutMs: number;
   /** HTTP server port. */
@@ -45,6 +57,11 @@ export const config: AppConfig = {
   ytDlpPath: process.env.YTDLP_PATH ?? resolveBundledYtDlp() ?? "yt-dlp",
   defaultCookiesFile: process.env.YTDLP_COOKIES_FILE,
   tmpDir: process.env.SLACKGRAM_TMP_DIR ?? path.join(os.tmpdir(), "slackgram"),
+  // Defaults to a directory inside the project rather than the OS tmp dir,
+  // since shared hosts commonly mount /tmp `noexec`, which breaks yt-dlp's
+  // self-extracting binary. Override with YTDLP_TMPDIR if needed (e.g. to
+  // point at the OS tmp dir on hosts where that's actually fine).
+  ytDlpTmpDir: process.env.YTDLP_TMPDIR ?? path.join(projectRoot, ".yt-dlp-tmp"),
   processTimeoutMs: intFromEnv("SLACKGRAM_TIMEOUT_MS", 120_000),
   port: intFromEnv("PORT", 3000),
   maxConcurrentJobs: intFromEnv("SLACKGRAM_MAX_CONCURRENT_JOBS", 4),

@@ -13,6 +13,14 @@ const projectRoot = path.resolve(__dirname, "..");
 const binDir = path.join(projectRoot, "bin");
 const dest = path.join(binDir, "yt-dlp");
 
+// The standalone yt-dlp_linux binary self-extracts its bundled Python
+// runtime into TMPDIR and executes from there. Some shared hosts mount
+// /tmp `noexec`, which breaks that. Default to a project-local dir instead
+// (overridable via YTDLP_TMPDIR), matching src/config.ts at runtime.
+const ytDlpTmpDir = process.env.YTDLP_TMPDIR || path.join(projectRoot, ".yt-dlp-tmp");
+fs.mkdirSync(ytDlpTmpDir, { recursive: true });
+const execEnv = { ...process.env, TMPDIR: ytDlpTmpDir };
+
 function alreadyWorking() {
   if (!fs.existsSync(dest)) return false;
   try {
@@ -20,7 +28,7 @@ function alreadyWorking() {
   } catch {
     return false;
   }
-  const result = spawnSync(dest, ["--version"], { stdio: "ignore" });
+  const result = spawnSync(dest, ["--version"], { stdio: "ignore", env: execEnv });
   return result.status === 0;
 }
 
@@ -55,7 +63,7 @@ function main() {
   try {
     execFileSync("curl", ["-sL", "-o", dest, url], { stdio: "inherit" });
     fs.chmodSync(dest, 0o755);
-    execFileSync(dest, ["--version"], { stdio: "inherit" });
+    execFileSync(dest, ["--version"], { stdio: "inherit", env: execEnv });
     console.log(`[slackgram] yt-dlp installed at ${dest}`);
   } catch (err) {
     console.warn(

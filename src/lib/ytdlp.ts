@@ -1,4 +1,5 @@
 import { spawn } from "node:child_process";
+import fs from "node:fs";
 import { config } from "../config";
 import { DownloadError } from "./types";
 
@@ -34,9 +35,14 @@ export function runYtDlp(options: YtDlpRunOptions): Promise<YtDlpRunResult> {
     url,
   ];
 
+  if (config.ytDlpTmpDir) {
+    fs.mkdirSync(config.ytDlpTmpDir, { recursive: true });
+  }
+
   return new Promise((resolve, reject) => {
     const child = spawn(config.ytDlpPath, fullArgs, {
       stdio: ["ignore", "pipe", "pipe"],
+      env: config.ytDlpTmpDir ? { ...process.env, TMPDIR: config.ytDlpTmpDir } : process.env,
     });
 
     let stdout = "";

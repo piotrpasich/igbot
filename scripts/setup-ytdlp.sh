@@ -26,5 +26,11 @@ echo "Downloading yt-dlp ($VERSION) from $URL ..."
 curl -sL -o "$DEST" "$URL"
 chmod +x "$DEST"
 
-"$DEST" --version
+# The standalone yt-dlp_linux binary self-extracts its bundled Python
+# runtime into TMPDIR and executes from there. Some shared hosts mount
+# /tmp `noexec`, which breaks that. Default to a project-local dir instead
+# (overridable via YTDLP_TMPDIR), matching src/config.ts at runtime.
+YTDLP_EXTRACT_TMPDIR="${YTDLP_TMPDIR:-$PROJECT_ROOT/.yt-dlp-tmp}"
+mkdir -p "$YTDLP_EXTRACT_TMPDIR"
+TMPDIR="$YTDLP_EXTRACT_TMPDIR" "$DEST" --version
 echo "yt-dlp installed at $DEST"
